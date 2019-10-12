@@ -7,7 +7,7 @@ public class FieldPosition {
     private Picture picture;
     private Field field;
 
-    public FieldPosition(int col, int row, Picture picture){
+    public FieldPosition(int col, int row, Field field){
 
     }
 

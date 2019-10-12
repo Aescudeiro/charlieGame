@@ -5,20 +5,20 @@ import org.academiadecodigo.thunderstructs.charlieteam.field.Field;
 import org.academiadecodigo.thunderstructs.charlieteam.gameObjects.GameObject;
 
 public class Game {
-
     private Field field;
     private GameObject[] gameObjects;
     private Player player;
 
     public void init(){
-        createField(500,600,100);
+        createField();
     }
 
     public void start(){
 
     }
 
-    public Field createField(int width, int height, int cellsize){
+    public Field createField(){
+        this.field = new Field(500,600);
         return field;
     }
 
