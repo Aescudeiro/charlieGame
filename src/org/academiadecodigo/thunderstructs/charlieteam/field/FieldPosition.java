@@ -27,6 +27,14 @@ public class FieldPosition {
 
     }
 
+    public int getCol(){
+        return this.col;
+    }
+
+    public int getRow(){
+        return this.row;
+    }
+
     public void setPicture(Picture picture){
         this.picture = picture;
     }
