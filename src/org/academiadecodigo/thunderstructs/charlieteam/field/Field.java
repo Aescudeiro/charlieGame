@@ -8,7 +8,7 @@ public class Field {
     private int padding = 10;
     private int cols;
     private int rows;
-    private int cellSize = 100;
+    private int cellSize = 50;
 
     public Field(int width, int height){
         Rectangle field = new Rectangle(padding,padding, width, height);
