@@ -10,7 +10,9 @@ public abstract class GameObject {
     private Field field;
     private FieldPosition fieldPos;
 
-    public GameObject(Field field,FieldPosition pos, Picture picture){
+    public GameObject(){}
+
+    public GameObject(Field field,FieldPosition pos){
 
     }
 
@@ -18,4 +20,7 @@ public abstract class GameObject {
 
     }
 
+    public void setPicture(Picture picture) {
+        this.picture = picture;
+    }
 }

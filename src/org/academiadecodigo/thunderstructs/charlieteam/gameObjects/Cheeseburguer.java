@@ -6,8 +6,11 @@ import org.academiadecodigo.thunderstructs.charlieteam.field.FieldPosition;
 
 public class Cheeseburguer extends GameObject {
 
-    public Cheeseburguer(Field field, FieldPosition pos,Picture picture){
-       super(field,pos,picture);
-    }
+    private Picture picture;
 
+    public Cheeseburguer(){}
+
+    public Cheeseburguer(Field field, FieldPosition pos){
+       super(field , pos);
+    }
 }

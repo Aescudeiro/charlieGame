@@ -2,6 +2,8 @@ package org.academiadecodigo.thunderstructs.charlieteam;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.thunderstructs.charlieteam.field.Field;
+import org.academiadecodigo.thunderstructs.charlieteam.field.FieldPosition;
+import org.academiadecodigo.thunderstructs.charlieteam.gameObjects.Cheeseburguer;
 import org.academiadecodigo.thunderstructs.charlieteam.gameObjects.GameObject;
 
 public class Game {
@@ -9,33 +11,37 @@ public class Game {
     private GameObject[] gameObjects;
     private Player player;
 
-    public void init(){
+    public void init() {
         createField();
         createPlayer();
     }
 
-    public void start(){
+    public void start() {
 
     }
 
-    public Field createField(){
-        this.field = new Field(500,800);
+    public Field createField() {
+        this.field = new Field(500, 800);
         return field;
     }
 
     public Player createPlayer() {
-        Picture picture = new Picture(100,100,"spr_player.png");
+        Picture picture = new Picture(100, 100, "spr_player.png");
         this.player = new Player(picture);
         return player;
     }
 
-    public GameObject[] createGameObjects() {
-        return gameObjects;
+    public void createGameObjects() {
+        for (int i = 0; i < gameObjects.length; i++) {
+            int random = randomPos();
+            gameObjects[i] = new Cheeseburguer(field, new FieldPosition(random, 0, field));
+        }
     }
 
-    public int randomPos(){
-        return 0;
+    public int randomPos() {
+        return (int) Math.random() * (5-1) + 1;
     }
 
 
 }
+

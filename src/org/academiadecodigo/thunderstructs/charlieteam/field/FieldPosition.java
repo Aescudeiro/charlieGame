@@ -2,7 +2,7 @@ package org.academiadecodigo.thunderstructs.charlieteam.field;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class FieldPosition {
+public class FtieldPosition {
 
     private Picture picture;
     private Field field;
