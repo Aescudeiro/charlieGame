@@ -7,7 +7,13 @@ public class Field {
     private Picture field;
     private int cols;
     private int rows;
-    private int cellSize;
+    private int cellSize = 100;
+
+    public Field(Picture picture){
+        this.field = picture;
+        this.rows = picture.getHeight() / this.cellSize;
+        this.cols = picture.getWidth() / this.cellSize;
+    }
 
     public void init(){
 
