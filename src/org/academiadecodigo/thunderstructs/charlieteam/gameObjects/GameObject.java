@@ -1,6 +1,7 @@
 package org.academiadecodigo.thunderstructs.charlieteam.gameObjects;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+import org.academiadecodigo.thunderstructs.charlieteam.Game;
 import org.academiadecodigo.thunderstructs.charlieteam.field.Field;
 import org.academiadecodigo.thunderstructs.charlieteam.field.FieldPosition;
 
@@ -20,8 +21,14 @@ public abstract class GameObject {
     }
 
     public void fall(){
+        picture.translate(0,100);
+        picture.translate(0,100);
+        picture.translate(0,100);
+
 
     }
+
+
 
     public void setPicture(Picture picture) {
         this.picture = picture;

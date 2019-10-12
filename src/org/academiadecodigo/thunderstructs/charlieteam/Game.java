@@ -21,6 +21,10 @@ public class Game {
     }
 
     public void start() {
+        for(GameObject object : gameObjects){
+            object.getFieldPos().show();
+            //object.fall();
+        }
 
     }
 
@@ -54,6 +58,7 @@ public class Game {
         for (int i = 0; i < gameObjects.length; i++) {
             int random = randomPos();
             gameObjects[i] = new Cheeseburguer(field, new FieldPosition(random, 0, field));
+            gameObjects[i].getFieldPos().setPicture(gameObjects[i].getPicture());
         }
     }
 

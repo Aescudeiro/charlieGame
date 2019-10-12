@@ -8,16 +8,13 @@ import javax.swing.text.Position;
 
 public class Cheeseburguer extends GameObject {
 
+    private Picture picture = new Picture(getFieldPos().getCol(),getFieldPos().getRow(), "spr_burguer.png");
+
     public Cheeseburguer(){}
 
     public Cheeseburguer(Field field, FieldPosition pos){
        super(field , pos);
-
-       Picture picture = new Picture(getFieldPos().getCol(),getFieldPos().getRow(), "spr_burguer.png");
-
        super.setPicture(picture);
-
-       super.getFieldPos().setPicture(getPicture());
 
     }
 }

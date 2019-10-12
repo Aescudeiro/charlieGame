@@ -12,7 +12,6 @@ public class FieldPosition {
         this.col = col;
         this.row = row;
         this.field = field;
-        show();
     }
 
     public void show(){
