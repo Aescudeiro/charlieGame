@@ -9,8 +9,14 @@ public class Player implements KeyboardHandler {
     private Picture picture;
     private FieldPosition initPos;
 
-    public void draw(){
+    public Player(Picture picture){
+        this.picture = picture;
+        picture.grow(-25,-25);
+        draw();
+    }
 
+    public void draw(){
+        this.picture.draw();
     }
 
     @Override

@@ -11,6 +11,7 @@ public class Game {
 
     public void init(){
         createField();
+        createPlayer();
     }
 
     public void start(){
@@ -18,15 +19,17 @@ public class Game {
     }
 
     public Field createField(){
-        this.field = new Field(500,600);
+        this.field = new Field(500,800);
         return field;
     }
 
-    public Player getPlayer(Picture picture) {
+    public Player createPlayer() {
+        Picture picture = new Picture(100,100,"spr_player.png");
+        this.player = new Player(picture);
         return player;
     }
 
-    public GameObject[] getGameObjects() {
+    public GameObject[] createGameObjects() {
         return gameObjects;
     }
 
