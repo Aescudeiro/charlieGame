@@ -14,9 +14,12 @@ public class Game {
     public void init() {
         createField();
         createPlayer();
+        createGameObjects();
     }
 
     public void start() {
+
+
 
     }
 
@@ -32,6 +35,7 @@ public class Game {
     }
 
     public void createGameObjects() {
+        gameObjects = new GameObject[10];
         for (int i = 0; i < gameObjects.length; i++) {
             int random = randomPos();
             gameObjects[i] = new Cheeseburguer(field, new FieldPosition(random, 0, field));
