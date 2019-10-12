@@ -1,5 +1,8 @@
 package org.academiadecodigo.thunderstructs.charlieteam;
 
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.thunderstructs.charlieteam.field.Field;
 import org.academiadecodigo.thunderstructs.charlieteam.field.FieldPosition;
@@ -19,8 +22,6 @@ public class Game {
 
     public void start() {
 
-
-
     }
 
     public Field createField() {
@@ -29,8 +30,22 @@ public class Game {
     }
 
     public Player createPlayer() {
-        Picture picture = new Picture(100, 100, "spr_player.png");
+        Picture picture = new Picture(225, 735, "spr_player.png");
         this.player = new Player(picture);
+
+        Keyboard keyboard = new Keyboard(player);
+
+        KeyboardEvent left = new KeyboardEvent();
+        player.keyPressed(left);
+        left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        left.setKey(KeyboardEvent.KEY_LEFT);
+        keyboard.addEventListener(left);
+
+        KeyboardEvent right = new KeyboardEvent();
+        player.keyPressed(right);
+        right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        right.setKey(KeyboardEvent.KEY_RIGHT);
+        keyboard.addEventListener(right);
         return player;
     }
 
@@ -48,4 +63,3 @@ public class Game {
 
 
 }
-
