@@ -9,19 +9,19 @@ import org.academiadecodigo.thunderstructs.charlieteam.field.FieldPosition;
 public class Player implements KeyboardHandler {
 
     private Field field;
-    private Picture playerPicture;
+    private Picture playerPicture ;
     private FieldPosition pos;
     private int x;
     private int y;
     private int width = 50;
     private int height = 50;
 
-    public Player(Field field, FieldPosition pos) {
+    public Player(Field field, FieldPosition pos){
         this.field = field;
         this.pos = pos;
         this.playerPicture = new Picture(pos.getX(), pos.getY(), "spr_player.png");
 
-        playerPicture.grow(-25, -25);
+        playerPicture.grow(-25,-25);
         pos.setPicture(playerPicture);
         draw();
     }
@@ -42,7 +42,7 @@ public class Player implements KeyboardHandler {
         return height;
     }
 
-    public void draw() {
+    public void draw(){
         this.playerPicture.draw();
     }
 
@@ -86,6 +86,8 @@ public class Player implements KeyboardHandler {
 
 
     }
+
+
 
 
 }

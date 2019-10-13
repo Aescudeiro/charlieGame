@@ -1,5 +1,6 @@
 package org.academiadecodigo.thunderstructs.charlieteam;
 
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -20,6 +21,8 @@ public class Game {
         Picture background = new Picture(10, 10, "spr_background.png");
         background.draw();
         createPlayer();
+        menu();
+
     }
 
     public void start() throws InterruptedException {
@@ -48,7 +51,7 @@ public class Game {
 
     public Player createPlayer() {
 
-        this.player = new Player(field, new FieldPosition(225, 735, field));
+        this.player = new Player(field, new FieldPosition(225,735,field));
 
         Keyboard keyboard = new Keyboard(player);
 
@@ -74,5 +77,18 @@ public class Game {
     public void collision() {
 
     }
+public void menu(){
+    Menu menu = new Menu();
+    Keyboard keyboard = new Keyboard(menu);
 
+    KeyboardEvent space = new KeyboardEvent();
+    space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+    space.setKey(KeyboardEvent.KEY_SPACE);
+
+    keyboard.addEventListener(space);
+
+    menu.menu();
 }
+}
+
+
