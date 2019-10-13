@@ -1,7 +1,6 @@
 package org.academiadecodigo.thunderstructs.charlieteam.gameObjects;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.thunderstructs.charlieteam.Game;
 import org.academiadecodigo.thunderstructs.charlieteam.field.Field;
 import org.academiadecodigo.thunderstructs.charlieteam.field.FieldPosition;
 
@@ -12,8 +11,6 @@ public abstract class GameObject {
     private FieldPosition fieldPos;
 
 
-    public GameObject(){}
-
     public GameObject(Field field,FieldPosition pos){
         this.field = field;
         this.fieldPos = pos;
@@ -21,23 +18,11 @@ public abstract class GameObject {
 
 
     public void fall() throws InterruptedException {
-        while(fieldPos.getRow() < 735){
+        while(fieldPos.getY() < field.getHeight() - picture.getHeight() - 20){
         picture.translate(0,1);
-        fieldPos.setRow(1);
-            Thread.sleep(2);
-            /*picture.translate(0,50);
-        Thread.sleep(200);
-        picture.translate(0,50);
-        Thread.sleep(200);
-        picture.translate(0,50);
-        Thread.sleep(200);
-        picture.translate(0,50);
-        Thread.sleep(200);
-        picture.translate(0,50);
-        Thread.sleep(200);
-        picture.translate(0,50);*/
+        fieldPos.setY(1);
+        Thread.sleep(2);
         }
-        fieldPos.hide();
 
     }
 
