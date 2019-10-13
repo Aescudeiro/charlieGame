@@ -25,12 +25,12 @@ public class Player implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT){
-            player.translate(-40, 0);
+            player.translate(-10, 0);
             player.draw();
         }
 
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT){
-            player.translate(40,0);
+            player.translate(10,0);
             player.draw();
         }
 

@@ -17,17 +17,19 @@ public class Game {
 
     public void init() {
         createField();
+        Picture background = new Picture(10,10,"spr_background.png");
+        background.draw();
         createPlayer();
     }
 
     public void start() throws InterruptedException {
-        while(points < 10){
-        object = new Cheeseburguer(field, new FieldPosition(randomPos(),-50,field));
+        while (points < 10) {
+            object = new Cheeseburguer(field, new FieldPosition(randomPos(), -10, field));
 
-        object.getFieldPos().setPicture(object.getPicture());
-        object.getFieldPos().show();
-        object.fall();
-        continue;
+            object.getFieldPos().setPicture(object.getPicture());
+            object.getFieldPos().show();
+            object.fall();
+            continue;
         }
 
     }
