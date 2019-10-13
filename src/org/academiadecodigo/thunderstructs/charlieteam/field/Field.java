@@ -6,15 +6,15 @@ public class Field {
 
     private Rectangle field;
     private int padding = 10;
-    private int cols;
-    private int rows;
     private int cellSize = 50;
+    private int width;
+    private int height;
 
     public Field(int width, int height){
         Rectangle field = new Rectangle(padding,padding, width, height);
+        this.width = width;
+        this.height = height;
         this.field = field;
-        this.rows = field.getHeight() / this.cellSize;
-        this.cols = field.getWidth() / this.cellSize;
         init();
     }
 
@@ -22,12 +22,13 @@ public class Field {
         field.draw();
     }
 
-    public int getCols(){
-        return this.cols;
+
+    public int getWidth() {
+        return width;
     }
 
-    public int getRows(){
-        return this.rows;
+    public int getHeight() {
+        return height;
     }
 
     public int getCellSize() {
