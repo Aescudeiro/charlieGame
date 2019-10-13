@@ -10,8 +10,7 @@ public abstract class GameObject {
     private Picture picture;
     private Field field;
     private FieldPosition fieldPos;
-    private int row;
-    private int col;
+
 
     public GameObject(){}
 
@@ -20,11 +19,25 @@ public abstract class GameObject {
         this.fieldPos = pos;
     }
 
-    public void fall(){
-        picture.translate(0,100);
-        picture.translate(0,100);
-        picture.translate(0,100);
 
+    public void fall() throws InterruptedException {
+        while(fieldPos.getRow() < 735){
+        picture.translate(0,1);
+        fieldPos.setRow(1);
+            Thread.sleep(5);
+            /*picture.translate(0,50);
+        Thread.sleep(200);
+        picture.translate(0,50);
+        Thread.sleep(200);
+        picture.translate(0,50);
+        Thread.sleep(200);
+        picture.translate(0,50);
+        Thread.sleep(200);
+        picture.translate(0,50);
+        Thread.sleep(200);
+        picture.translate(0,50);*/
+        }
+        fieldPos.hide();
 
     }
 

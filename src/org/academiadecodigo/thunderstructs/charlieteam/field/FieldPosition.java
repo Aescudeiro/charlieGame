@@ -26,6 +26,10 @@ public class FieldPosition {
 
     }
 
+    public void setRow(int row) {
+        this.row += row;
+    }
+
     public int getCol(){
         return this.col;
     }

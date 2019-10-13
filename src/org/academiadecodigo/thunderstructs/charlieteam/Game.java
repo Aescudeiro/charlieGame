@@ -11,19 +11,29 @@ import org.academiadecodigo.thunderstructs.charlieteam.gameObjects.GameObject;
 
 public class Game {
     private Field field;
-    private GameObject[] gameObjects;
     private Player player;
+    private int points;
+    private GameObject object;
 
     public void init() {
         createField();
         createPlayer();
-        createGameObjects();
     }
 
-    public void start() {
-        for(GameObject object : gameObjects){
+    public void start() throws InterruptedException {
+        while(points < 10){
+        /*for(GameObject object : gameObjects){
+            object
+
             object.getFieldPos().show();
-            //object.fall();
+            object.fall();*/
+            System.out.println(randomPos());
+        object = new Cheeseburguer(field, new FieldPosition(randomPos(),-50,field));
+
+        object.getFieldPos().setPicture(object.getPicture());
+        object.getFieldPos().show();
+        object.fall();
+        continue;
         }
 
     }
@@ -54,16 +64,16 @@ public class Game {
     }
 
     public void createGameObjects() {
-        gameObjects = new GameObject[10];
-        for (int i = 0; i < gameObjects.length; i++) {
+
+        /*for (int i = 0; i < gameObjects.length; i++) {
             int random = randomPos();
             gameObjects[i] = new Cheeseburguer(field, new FieldPosition(random, 0, field));
             gameObjects[i].getFieldPos().setPicture(gameObjects[i].getPicture());
-        }
+        }*/
     }
 
     public int randomPos() {
-        return (int) Math.random() * (5-1) + 1;
+        return (int) (Math.random() * 450);
     }
 
 
