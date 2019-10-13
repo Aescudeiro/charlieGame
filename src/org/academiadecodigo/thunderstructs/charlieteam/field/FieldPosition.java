@@ -48,6 +48,14 @@ public class FieldPosition {
         return height;
     }
 
+    public int picMaxX(){
+        return picture.getMaxX();
+    }
+
+    public int picMaxY(){
+        return picture.getMaxY();
+    }
+
     public void setPicture(Picture picture){
         this.picture = picture;
     }

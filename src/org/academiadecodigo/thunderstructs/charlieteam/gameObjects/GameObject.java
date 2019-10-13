@@ -9,6 +9,8 @@ public abstract class GameObject {
     private Picture picture;
     private Field field;
     private FieldPosition fieldPos;
+    private int x;
+    private int y;
 
 
     public GameObject(Field field,FieldPosition pos){
@@ -17,14 +19,17 @@ public abstract class GameObject {
     }
 
 
-    public void fall() throws InterruptedException {
+    /*public void fall() throws InterruptedException {
         while(fieldPos.getY() < field.getHeight() - picture.getHeight() - 20){
         picture.translate(0,1);
         fieldPos.setY(1);
         Thread.sleep(2);
+
         }
 
-    }
+    }*/
+
+
 
 
 
