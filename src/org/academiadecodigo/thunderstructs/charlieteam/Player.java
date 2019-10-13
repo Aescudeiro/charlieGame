@@ -48,15 +48,17 @@ public class Player implements KeyboardHandler {
     }
 
     public void moveLeft()  {
-            this.playerPicture.translate(-10, 0);
-            playerPicture.draw();
+                this.playerPicture.translate(-10, 0);
+                playerPicture.draw();
+            }
 
-        }
+
 
     public void moveRight() {
-            this.playerPicture.translate(10, 0);
-            playerPicture.draw();
-        }
+        this.playerPicture.translate(10, 0);
+        playerPicture.draw();
+
+    }
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
