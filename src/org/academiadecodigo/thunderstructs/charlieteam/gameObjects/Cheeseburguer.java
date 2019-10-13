@@ -10,11 +10,9 @@ public class Cheeseburguer extends GameObject {
 
     // private Picture picture = new Picture(getFieldPos().getCol(),getFieldPos().getRow(), "spr_burguer.png");
 
-    public Cheeseburguer(){}
-
     public Cheeseburguer(Field field, FieldPosition pos){
        super(field , pos);
-       setPicture(new Picture(getFieldPos().getCol(), getFieldPos().getRow(), "spr_burguer.png"));
+       setPicture(new Picture(getFieldPos().getY(), getFieldPos().getX(), "spr_burguer.png"));
        getPicture().grow(-25, -25);
 
     }
