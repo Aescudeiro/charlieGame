@@ -29,6 +29,7 @@ public class Game {
             object.getFieldPos().setPicture(object.getPicture());
             object.getFieldPos().show();
             object.fall();
+            object.getFieldPos().hide();
             continue;
         }
 
@@ -40,8 +41,8 @@ public class Game {
     }
 
     public Player createPlayer() {
-        Picture picture = new Picture(225, 735, "spr_player.png");
-        this.player = new Player(picture);
+
+        this.player = new Player(field, new FieldPosition(225,735,field));
 
         Keyboard keyboard = new Keyboard(player);
 
