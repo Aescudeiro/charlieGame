@@ -1,5 +1,6 @@
 package org.academiadecodigo.thunderstructs.charlieteam;
 
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -20,6 +21,8 @@ public class Game {
         Picture background = new Picture(10,10,"spr_background.png");
         background.draw();
         createPlayer();
+        menu();
+
     }
 
     public void start() throws InterruptedException {
@@ -42,28 +45,47 @@ public class Game {
 
     public Player createPlayer() {
 
-        this.player = new Player(field, new FieldPosition(225,735,field));
+        this.player = new Player(field, new FieldPosition(225, 735, field));
 
         Keyboard keyboard = new Keyboard(player);
 
-        KeyboardEvent left = new KeyboardEvent();
-        player.keyPressed(left);
-        left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        left.setKey(KeyboardEvent.KEY_LEFT);
-        keyboard.addEventListener(left);
 
-        KeyboardEvent right = new KeyboardEvent();
-        player.keyPressed(right);
-        right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        right.setKey(KeyboardEvent.KEY_RIGHT);
-        keyboard.addEventListener(right);
+        KeyboardEvent leftPressed = new KeyboardEvent();
+        leftPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        leftPressed.setKey(KeyboardEvent.KEY_LEFT);
+
+
+
+        KeyboardEvent rightPressed = new KeyboardEvent();
+        rightPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        rightPressed.setKey(KeyboardEvent.KEY_RIGHT);
+
+
+
+        keyboard.addEventListener(leftPressed);
+        keyboard.addEventListener(rightPressed);
+
         return player;
     }
+
 
 
     public int randomPos() {
         return (int) (Math.random() * 400);
     }
 
+public void menu(){
+    Menu menu = new Menu();
+    Keyboard keyboard = new Keyboard(menu);
 
+    KeyboardEvent space = new KeyboardEvent();
+    space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+    space.setKey(KeyboardEvent.KEY_SPACE);
+
+    keyboard.addEventListener(space);
+
+    menu.menu();
 }
+}
+
+

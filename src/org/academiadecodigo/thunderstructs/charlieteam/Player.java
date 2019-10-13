@@ -9,19 +9,20 @@ import org.academiadecodigo.thunderstructs.charlieteam.field.FieldPosition;
 public class Player implements KeyboardHandler {
 
     private Field field;
-    private Picture playerPicture ;
+    private Picture playerPicture;
     private FieldPosition pos;
     private int x;
     private int y;
     private int width = 50;
     private int height = 50;
 
-    public Player(Field field, FieldPosition pos){
+
+    public Player(Field field, FieldPosition pos) {
         this.field = field;
         this.pos = pos;
         this.playerPicture = new Picture(pos.getX(), pos.getY(), "spr_player.png");
 
-        playerPicture.grow(-25,-25);
+        playerPicture.grow(-25, -25);
         pos.setPicture(playerPicture);
         draw();
     }
@@ -42,27 +43,34 @@ public class Player implements KeyboardHandler {
         return height;
     }
 
-    public void draw(){
+    public void draw() {
         this.playerPicture.draw();
     }
+
+    public void moveLeft()  {
+            this.playerPicture.translate(-10, 0);
+            playerPicture.draw();
+
+        }
+
+    public void moveRight() {
+            this.playerPicture.translate(10, 0);
+            playerPicture.draw();
+        }
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
-        if(keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT){
-            if(pos.getX() > -10){
-            playerPicture.translate(-10, 0);
-            pos.setX(-10);
-            System.out.println(pos.getX());
-            playerPicture.draw();}
-        }
+        switch (keyboardEvent.getKey()) {
 
-        if(keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT){
-            if(pos.getX() < field.getWidth() - 20 - playerPicture.getWidth()){
-            playerPicture.translate(10,0);
-            pos.setX(10);
-            System.out.println(pos.getX());
-            playerPicture.draw();}
+            case KeyboardEvent.KEY_LEFT:
+                    moveLeft();
+                break;
+
+            case KeyboardEvent.KEY_RIGHT:
+                    moveRight();
+                break;
+
         }
 
     }
@@ -70,14 +78,9 @@ public class Player implements KeyboardHandler {
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
-        if(keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT){
-
-        }
 
 
     }
-
-
 
 
 }
