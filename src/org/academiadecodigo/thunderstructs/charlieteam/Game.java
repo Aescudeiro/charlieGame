@@ -12,7 +12,8 @@ import org.academiadecodigo.thunderstructs.charlieteam.gameObjects.GameObject;
 public class Game {
     private Field field;
     private Player player;
-    private int points;
+    private boolean win;
+
     private GameObject object;
 
     public void init() {
@@ -23,12 +24,13 @@ public class Game {
     }
 
     public void start() throws InterruptedException {
-        while (points < 10) {
+        while (!win) {
             object = new Cheeseburguer(field, new FieldPosition(randomPos(), -10, field));
 
             object.getFieldPos().setPicture(object.getPicture());
             object.getFieldPos().show();
             object.fall();
+            player.playerMove();
             continue;
         }
 
@@ -46,16 +48,31 @@ public class Game {
         Keyboard keyboard = new Keyboard(player);
 
         KeyboardEvent left = new KeyboardEvent();
-        player.keyPressed(left);
-        left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        left.setKey(KeyboardEvent.KEY_LEFT);
-        keyboard.addEventListener(left);
-
+        KeyboardEvent leftRelease = new KeyboardEvent();
         KeyboardEvent right = new KeyboardEvent();
+        KeyboardEvent rightRelease = new KeyboardEvent();
+
+        player.keyPressed(left);
+        player.keyReleased(leftRelease);
         player.keyPressed(right);
+        player.keyReleased(rightRelease);
+
+        left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        leftRelease.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        rightRelease.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
+        left.setKey(KeyboardEvent.KEY_LEFT);
+        leftRelease.setKey(KeyboardEvent.KEY_LEFT);
+
         right.setKey(KeyboardEvent.KEY_RIGHT);
+        rightRelease.setKey(KeyboardEvent.KEY_RIGHT);
+
+        keyboard.addEventListener(left);
+        keyboard.addEventListener(leftRelease);
         keyboard.addEventListener(right);
+        keyboard.addEventListener(rightRelease);
+
         return player;
     }
 

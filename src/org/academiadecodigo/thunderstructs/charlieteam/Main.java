@@ -10,7 +10,6 @@ public class Main {
         game.init();
         game.start();
 
-        //Keyboard keyboard = new Keyboard();
     }
 
 }
