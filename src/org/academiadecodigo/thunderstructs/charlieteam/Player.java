@@ -21,8 +21,8 @@ public class Player implements KeyboardHandler {
         this.pos = pos;
         this.playerPicture = new Picture(pos.getX(), pos.getY(), "spr_player.png");
 
-        playerPicture.grow(-25,-25);
         pos.setPicture(playerPicture);
+        playerPicture.grow(25,25);
         draw();
     }
 
@@ -58,7 +58,7 @@ public class Player implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT) {
-            if (pos.getX() > -10) {
+            if (pos.getX() > 40) {
                 playerPicture.translate(-10, 0);
                 pos.setX(-10);
                 System.out.println(pos.getX());
@@ -67,7 +67,7 @@ public class Player implements KeyboardHandler {
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT) {
-            if (pos.getX() < field.getWidth() - 20 - playerPicture.getWidth()) {
+            if (pos.getX() < field.getWidth() - 70) {
                 playerPicture.translate(10, 0);
                 pos.setX(10);
                 System.out.println(pos.getX());
