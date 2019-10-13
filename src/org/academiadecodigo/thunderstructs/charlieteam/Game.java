@@ -22,12 +22,6 @@ public class Game {
 
     public void start() throws InterruptedException {
         while(points < 10){
-        /*for(GameObject object : gameObjects){
-            object
-
-            object.getFieldPos().show();
-            object.fall();*/
-            System.out.println(randomPos());
         object = new Cheeseburguer(field, new FieldPosition(randomPos(),-50,field));
 
         object.getFieldPos().setPicture(object.getPicture());
@@ -63,17 +57,9 @@ public class Game {
         return player;
     }
 
-    public void createGameObjects() {
-
-        /*for (int i = 0; i < gameObjects.length; i++) {
-            int random = randomPos();
-            gameObjects[i] = new Cheeseburguer(field, new FieldPosition(random, 0, field));
-            gameObjects[i].getFieldPos().setPicture(gameObjects[i].getPicture());
-        }*/
-    }
 
     public int randomPos() {
-        return (int) (Math.random() * 450);
+        return (int) (Math.random() * 400);
     }
 
 

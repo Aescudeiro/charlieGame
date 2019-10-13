@@ -24,7 +24,7 @@ public abstract class GameObject {
         while(fieldPos.getRow() < 735){
         picture.translate(0,1);
         fieldPos.setRow(1);
-            Thread.sleep(5);
+            Thread.sleep(2);
             /*picture.translate(0,50);
         Thread.sleep(200);
         picture.translate(0,50);
