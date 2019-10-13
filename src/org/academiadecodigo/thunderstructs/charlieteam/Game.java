@@ -17,7 +17,7 @@ public class Game {
 
     public void init() {
         createField();
-        Picture background = new Picture(10,10,"spr_background.png");
+        Picture background = new Picture(10, 10, "spr_background.png");
         background.draw();
         createPlayer();
     }
@@ -28,7 +28,14 @@ public class Game {
 
             object.getFieldPos().setPicture(object.getPicture());
             object.getFieldPos().show();
-            object.fall();
+            while (object.getFieldPos().getY() < field.getHeight() - object.getPicture().getHeight()) {
+                object.getPicture().translate(0, 1);
+                object.getFieldPos().setY(1);
+                collision();
+                Thread.sleep(2);
+
+            }
+            object.getFieldPos().hide();
             continue;
         }
 
@@ -40,8 +47,8 @@ public class Game {
     }
 
     public Player createPlayer() {
-        Picture picture = new Picture(225, 735, "spr_player.png");
-        this.player = new Player(picture);
+
+        this.player = new Player(field, new FieldPosition(225, 735, field));
 
         Keyboard keyboard = new Keyboard(player);
 
@@ -64,5 +71,8 @@ public class Game {
         return (int) (Math.random() * 400);
     }
 
+    public void collision() {
+
+    }
 
 }
