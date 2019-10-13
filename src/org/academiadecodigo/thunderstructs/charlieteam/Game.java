@@ -18,7 +18,7 @@ public class Game {
 
     public void init() {
         createField();
-        Picture background = new Picture(10,10,"spr_background.png");
+        Picture background = new Picture(10, 10, "spr_background.png");
         background.draw();
         createPlayer();
         menu();
@@ -31,7 +31,13 @@ public class Game {
 
             object.getFieldPos().setPicture(object.getPicture());
             object.getFieldPos().show();
-            object.fall();
+            while (object.getFieldPos().getY() < field.getHeight() - object.getPicture().getHeight()) {
+                object.getPicture().translate(0, 1);
+                object.getFieldPos().setY(1);
+                collision();
+                Thread.sleep(2);
+
+            }
             object.getFieldPos().hide();
             continue;
         }
@@ -45,35 +51,32 @@ public class Game {
 
     public Player createPlayer() {
 
-        this.player = new Player(field, new FieldPosition(225, 735, field));
+        this.player = new Player(field, new FieldPosition(225,735,field));
 
         Keyboard keyboard = new Keyboard(player);
 
+        KeyboardEvent left = new KeyboardEvent();
+        player.keyPressed(left);
+        left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        left.setKey(KeyboardEvent.KEY_LEFT);
+        keyboard.addEventListener(left);
 
-        KeyboardEvent leftPressed = new KeyboardEvent();
-        leftPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        leftPressed.setKey(KeyboardEvent.KEY_LEFT);
-
-
-
-        KeyboardEvent rightPressed = new KeyboardEvent();
-        rightPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        rightPressed.setKey(KeyboardEvent.KEY_RIGHT);
-
-
-
-        keyboard.addEventListener(leftPressed);
-        keyboard.addEventListener(rightPressed);
-
+        KeyboardEvent right = new KeyboardEvent();
+        player.keyPressed(right);
+        right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        right.setKey(KeyboardEvent.KEY_RIGHT);
+        keyboard.addEventListener(right);
         return player;
     }
-
 
 
     public int randomPos() {
         return (int) (Math.random() * 400);
     }
 
+    public void collision() {
+
+    }
 public void menu(){
     Menu menu = new Menu();
     Keyboard keyboard = new Keyboard(menu);
