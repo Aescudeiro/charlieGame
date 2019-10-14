@@ -22,6 +22,7 @@ public class Game {
         background.draw();
         createPlayer();
         menu();
+        gameOver();
 
     }
 
@@ -97,6 +98,7 @@ public class Game {
 
         keyboard.addEventListener(r);
 
+        gameOver.gameOver();
 
     }
 
