@@ -1,6 +1,5 @@
 package org.academiadecodigo.thunderstructs.charlieteam;
 
-import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -26,19 +25,21 @@ public class Game {
     }
 
     public void start() throws InterruptedException {
-        while (points < 10) {
+        while (player.getHealth() > 0) {
             object = new Cheeseburguer(field, new FieldPosition(randomPos(), -10, field));
 
             object.getFieldPos().setPicture(object.getPicture());
             object.getFieldPos().show();
             while (object.getFieldPos().getY() < field.getHeight() - object.getPicture().getHeight()) {
+                System.out.println(player.getHealth());
                 object.getPicture().translate(0, 1);
                 object.getFieldPos().setY(1);
                 collision();
                 Thread.sleep(2);
-
             }
             object.getFieldPos().hide();
+            player.setHealth(-1);
+            System.out.println(player.getHealth());
             continue;
         }
 
@@ -87,17 +88,14 @@ public class Game {
         menu.menu();
     }
 
-    public void collision(){
+    public void collision() {
         //System.out.println("Player x: " + player.getX() + " Player maxX: " + (player.getX() + player.getWidth()));
         //System.out.println("Object x: " + object.getFieldPos().getX() + " Object maxX: " + (object.getFieldPos().getX() + object.getFieldPos().getWidth()));
-        if(object.getFieldPos().getY() + object.getFieldPos().getHeight() == player.getY()){
-            if(player.getX() -60 < object.getFieldPos().getX() && player.getX() + player.getWidth() > object.getFieldPos().getX() + object.getFieldPos().getWidth()){
-                System.out.println("Collision");
+        if (object.getFieldPos().getY() + object.getFieldPos().getHeight() == player.getY()) {
+            if (player.getX() - 60 < object.getFieldPos().getX() && player.getX() + player.getWidth() > object.getFieldPos().getX() + object.getFieldPos().getWidth()) {
                 object.getFieldPos().hide();
+                player.setHealth(1);
             }
         }
     }
-
 }
-
-
