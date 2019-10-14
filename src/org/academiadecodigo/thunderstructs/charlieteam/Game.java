@@ -51,7 +51,7 @@ public class Game {
 
     public Player createPlayer() {
 
-        this.player = new Player(field, new FieldPosition(225,735,field));
+        this.player = new Player(field, new FieldPosition(225, 735, field));
 
         Keyboard keyboard = new Keyboard(player);
 
@@ -74,21 +74,30 @@ public class Game {
         return (int) (Math.random() * 400);
     }
 
-    public void collision() {
+    public void menu() {
+        Menu menu = new Menu();
+        Keyboard keyboard = new Keyboard(menu);
 
+        KeyboardEvent space = new KeyboardEvent();
+        space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        space.setKey(KeyboardEvent.KEY_SPACE);
+
+        keyboard.addEventListener(space);
+
+        menu.menu();
     }
-public void menu(){
-    Menu menu = new Menu();
-    Keyboard keyboard = new Keyboard(menu);
 
-    KeyboardEvent space = new KeyboardEvent();
-    space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-    space.setKey(KeyboardEvent.KEY_SPACE);
+    public void collision(){
+        //System.out.println("Player x: " + player.getX() + " Player maxX: " + (player.getX() + player.getWidth()));
+        //System.out.println("Object x: " + object.getFieldPos().getX() + " Object maxX: " + (object.getFieldPos().getX() + object.getFieldPos().getWidth()));
+        if(object.getFieldPos().getY() + object.getFieldPos().getHeight() == player.getY()){
+            if(player.getX() -60 < object.getFieldPos().getX() && player.getX() + player.getWidth() > object.getFieldPos().getX() + object.getFieldPos().getWidth()){
+                System.out.println("Collision");
+                object.getFieldPos().hide();
+            }
+        }
+    }
 
-    keyboard.addEventListener(space);
-
-    menu.menu();
-}
 }
 
 

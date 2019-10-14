@@ -11,10 +11,6 @@ public class Player implements KeyboardHandler {
     private Field field;
     private Picture playerPicture ;
     private FieldPosition pos;
-    private int x;
-    private int y;
-    private int width = 50;
-    private int height = 50;
 
     public Player(Field field, FieldPosition pos){
         this.field = field;
@@ -27,19 +23,19 @@ public class Player implements KeyboardHandler {
     }
 
     public int getX() {
-        return x;
+        return pos.getX();
     }
 
     public int getY() {
-        return y;
+        return pos.getY();
     }
 
     public int getWidth() {
-        return width;
+        return playerPicture.getWidth();
     }
 
     public int getHeight() {
-        return height;
+        return playerPicture.getHeight();
     }
 
     public void draw(){
@@ -64,6 +60,7 @@ public class Player implements KeyboardHandler {
                 playerPicture.draw();
             }
         }
+
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT) {
             if (pos.getX() < field.getWidth() - 70) {
