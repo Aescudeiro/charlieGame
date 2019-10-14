@@ -29,7 +29,6 @@ public class Game {
 
     public void start() throws InterruptedException {
         levelOne();
-        levelTwo();
         /*while (points < 10) {
             int objectRandom = (int) (Math.random() * 2);
             switch (objectRandom) {
