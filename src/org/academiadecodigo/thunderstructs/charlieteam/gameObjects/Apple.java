@@ -6,7 +6,7 @@ import org.academiadecodigo.thunderstructs.charlieteam.field.FieldPosition;
 
 public class Apple extends GameObject{
 
-    public Apple (Fiegild field, FieldPosition pos){
+    public Apple (Field field, FieldPosition pos){
         super(field , pos);
         setPicture(new Picture(getFieldPos().getX(), getFieldPos().getY(), "spr_burguer.png"));
 
