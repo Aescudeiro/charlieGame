@@ -61,7 +61,6 @@ public class Player implements KeyboardHandler {
             if (pos.getX() > 40) {
                 playerPicture.translate(-10, 0);
                 pos.setX(-10);
-                System.out.println(pos.getX());
                 playerPicture.draw();
             }
         }
@@ -70,7 +69,6 @@ public class Player implements KeyboardHandler {
             if (pos.getX() < field.getWidth() - 70) {
                 playerPicture.translate(10, 0);
                 pos.setX(10);
-                System.out.println(pos.getX());
                 playerPicture.draw();
             }
         }
