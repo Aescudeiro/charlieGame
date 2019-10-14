@@ -4,12 +4,11 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.thunderstructs.charlieteam.field.Field;
 import org.academiadecodigo.thunderstructs.charlieteam.field.FieldPosition;
 
-public class Cheeseburguer extends GameObject {
+public class Apple extends GameObject{
 
-
-    public Cheeseburguer(Field field, FieldPosition pos){
-       super(field , pos);
-       setPicture(new Picture(getFieldPos().getX(), getFieldPos().getY(), "spr_burguer.png"));
+    public Apple (Field field, FieldPosition pos){
+        super(field , pos);
+        setPicture(new Picture(getFieldPos().getX(), getFieldPos().getY(), "spr_apple.png"));
 
     }
 }

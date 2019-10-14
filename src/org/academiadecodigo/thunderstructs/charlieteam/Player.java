@@ -11,6 +11,7 @@ public class Player implements KeyboardHandler {
     private Field field;
     private Picture playerPicture ;
     private FieldPosition pos;
+    private int health = 3;
 
     public Player(Field field, FieldPosition pos){
         this.field = field;
@@ -42,12 +43,24 @@ public class Player implements KeyboardHandler {
         this.playerPicture.draw();
     }
 
+    public void hide(){
+        this.playerPicture.delete();
+    }
+
     public int playerMaxX(){
         return playerPicture.getMaxX();
     }
 
     public int playerMaxY(){
         return playerPicture.getMaxY();
+    }
+
+    public int getHealth(){
+        return this.health;
+    }
+
+    public void setHealth(int n){
+        this.health += n;
     }
 
     @Override
