@@ -1,5 +1,6 @@
 package org.academiadecodigo.thunderstructs.charlieteam;
 
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -39,6 +40,9 @@ public class Game {
             }
             object.getFieldPos().hide();
             player.setHealth(-1);
+            if (player.getHealth() == 0){
+                gameOver();
+            }
             System.out.println(player.getHealth());
             continue;
         }
@@ -88,7 +92,20 @@ public class Game {
         menu.menu();
     }
 
-    public void collision() {
+    public void gameOver () {
+        GameOver gameOver = new GameOver();
+        Keyboard keyboard = new Keyboard(gameOver);
+
+        KeyboardEvent r = new KeyboardEvent();
+        r.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        r.setKey(KeyboardEvent.KEY_R);
+
+        keyboard.addEventListener(r);
+
+
+    }
+
+    public void collision(){
         //System.out.println("Player x: " + player.getX() + " Player maxX: " + (player.getX() + player.getWidth()));
         //System.out.println("Object x: " + object.getFieldPos().getX() + " Object maxX: " + (object.getFieldPos().getX() + object.getFieldPos().getWidth()));
         if (object.getFieldPos().getY() + object.getFieldPos().getHeight() == player.getY()) {
