@@ -7,8 +7,10 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.thunderstructs.charlieteam.field.Field;
 import org.academiadecodigo.thunderstructs.charlieteam.field.FieldPosition;
+import org.academiadecodigo.thunderstructs.charlieteam.gameObjects.Apple;
 import org.academiadecodigo.thunderstructs.charlieteam.gameObjects.Cheeseburguer;
 import org.academiadecodigo.thunderstructs.charlieteam.gameObjects.GameObject;
+import org.academiadecodigo.thunderstructs.charlieteam.gameObjects.Salad;
 
 public class Game {
     private Field field;
@@ -28,6 +30,17 @@ public class Game {
     public void start() throws InterruptedException {
         while (player.getHealth() > 0) {
             object = new Cheeseburguer(field, new FieldPosition(randomPos(), -10, field));
+            levelOne();
+        /*while (points < 10) {
+            int objectRandom = (int) (Math.random() * 2);
+            switch (objectRandom) {
+                case 0:
+                    object = new Cheeseburguer(field, new FieldPosition(randomPos(), -10, field));
+                case 1:
+                    object = new Apple(field, new FieldPosition(randomPos(), -10, field));
+                default:
+                    object = new Cheeseburguer(field, new FieldPosition(randomPos(), -10, field));
+            }
 
             object.getFieldPos().setPicture(object.getPicture());
             object.getFieldPos().show();
@@ -37,6 +50,7 @@ public class Game {
                 object.getFieldPos().setY(1);
                 collision();
                 Thread.sleep(2);
+
             }
             object.getFieldPos().hide();
             player.setHealth(-1);
@@ -45,8 +59,8 @@ public class Game {
             }
             System.out.println(player.getHealth());
             continue;
+        }*/
         }
-
     }
 
     public Field createField() {
@@ -110,9 +124,54 @@ public class Game {
         //System.out.println("Object x: " + object.getFieldPos().getX() + " Object maxX: " + (object.getFieldPos().getX() + object.getFieldPos().getWidth()));
         if (object.getFieldPos().getY() + object.getFieldPos().getHeight() == player.getY()) {
             if (player.getX() - 60 < object.getFieldPos().getX() && player.getX() + player.getWidth() > object.getFieldPos().getX() + object.getFieldPos().getWidth()) {
-                object.getFieldPos().hide();
-                player.setHealth(1);
+                if (object.getFieldPos().getY() + object.getFieldPos().getHeight() == player.getY()) {
+                    if (player.getX() - 60 < object.getFieldPos().getX() && player.getX() + player.getWidth() > object.getFieldPos().getX() + object.getFieldPos().getWidth()) {
+                        System.out.println("Collision");
+                        if (object instanceof Cheeseburguer) {
+                            points++;
+                            System.out.println(points);
+                        }
+                        if (object instanceof Apple) {
+                            System.out.println("NOOOOOOOOOOOOOOOOOOOO");
+                        }
+                        object.getFieldPos().hide();
+                        player.setHealth(1);
+                    }
+                }
             }
         }
     }
+
+    public void levelOne() throws InterruptedException {
+        while (points < 10) {
+            object = new Cheeseburguer(field, new FieldPosition(randomPos(), -10, field));
+
+            object.getFieldPos().setPicture(object.getPicture());
+            object.getFieldPos().show();
+            while (object.getFieldPos().getY() < field.getHeight() - object.getPicture().getHeight()) {
+                object.getPicture().translate(0, 1);
+                object.getFieldPos().setY(1);
+                collision();
+                Thread.sleep(2);
+
+            }
+            object.getFieldPos().hide();
+        }
+
+    }
+
+
+
+    public void fall() throws InterruptedException {
+        while (object.getFieldPos().getY() < field.getHeight() - object.getPicture().getHeight()) {
+            object.getPicture().translate(0, 1);
+            object.getFieldPos().setY(1);
+            collision();
+            Thread.sleep(1, 499999);
+
+        }
+    }
+
 }
+
+
