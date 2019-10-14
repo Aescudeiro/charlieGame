@@ -1,37 +1,29 @@
 package org.academiadecodigo.thunderstructs.charlieteam;
 
-import org.academiadecodigo.simplegraphics.graphics.Text;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Menu implements KeyboardHandler {
+public class GameOver implements KeyboardHandler {
+    private boolean enter = false;
 
-private boolean space = false;
+    public void gameOver(){
 
-    public void menu(){
-
-        Picture welcome = new Picture(10,36,"spr_burgermenu.png");
-        welcome.grow(0, 26);
-        while (!space){
-            welcome.draw();
+        Picture over = new Picture(10, 10 ,"spr_gameover.png");
+        if (enter){
+            over.draw();
         }
-        welcome.delete();
-
     }
-
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
+
         switch (keyboardEvent.getKey()){
 
-            case KeyboardEvent.KEY_SPACE:
-                this.space = true;
+            case KeyboardEvent.KEY_R:
+                this.enter = true;
                 break;
         }
-
-
     }
 
     @Override

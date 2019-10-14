@@ -98,7 +98,20 @@ public class Game {
         menu.menu();
     }
 
-    public void collision() {
+    public void gameOver () {
+        GameOver gameOver = new GameOver();
+        Keyboard keyboard = new Keyboard(gameOver);
+
+        KeyboardEvent r = new KeyboardEvent();
+        r.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        r.setKey(KeyboardEvent.KEY_R);
+
+        keyboard.addEventListener(r);
+
+
+    }
+
+    public void collision(){
         //System.out.println("Player x: " + player.getX() + " Player maxX: " + (player.getX() + player.getWidth()));
         //System.out.println("Object x: " + object.getFieldPos().getX() + " Object maxX: " + (object.getFieldPos().getX() + object.getFieldPos().getWidth()));
         if (object.getFieldPos().getY() + object.getFieldPos().getHeight() == player.getY()) {
@@ -144,11 +157,8 @@ public class Game {
             Thread.sleep(1, 499999);
 
         }
-
-
     }
 
 }
-
 
 
