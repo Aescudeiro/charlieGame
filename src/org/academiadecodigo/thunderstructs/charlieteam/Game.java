@@ -79,6 +79,7 @@ public class Game {
 
         Keyboard keyboard = new Keyboard(player);
 
+
         KeyboardEvent left = new KeyboardEvent();
         player.keyPressed(left);
         left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
