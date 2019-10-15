@@ -20,27 +20,23 @@ public class Game {
 
     public void init() {
         createField();
+        menu();
         Picture background = new Picture(10, 10, "spr_background.png");
         background.draw();
         createPlayer();
-        menu();
-        gameOver();
 
     }
 
     public void start() throws InterruptedException {
-        while (player.getHealth() > 0) {
-            object = new Cheeseburguer(field, new FieldPosition(randomPos(), -10, field));
-            levelOne();
-        /*while (points < 10) {
+        while (points < 10 && player.getHealth() > 0) {
             int objectRandom = (int) (Math.random() * 2);
             switch (objectRandom) {
                 case 0:
-                    object = new Cheeseburguer(field, new FieldPosition(randomPos(), -10, field));
+                    object = new Cheeseburguer(field, new FieldPosition(randomPos(), -11, field));
                 case 1:
-                    object = new Apple(field, new FieldPosition(randomPos(), -10, field));
+                    object = new Apple(field, new FieldPosition(randomPos(), -11, field));
                 default:
-                    object = new Cheeseburguer(field, new FieldPosition(randomPos(), -10, field));
+                    object = new Cheeseburguer(field, new FieldPosition(randomPos(), -11, field));
             }
 
             object.getFieldPos().setPicture(object.getPicture());
@@ -60,9 +56,9 @@ public class Game {
             }
             System.out.println(player.getHealth());
             continue;
-        }*/
         }
-    }
+        }
+
 
     public Field createField() {
         this.field = new Field(500, 800);
@@ -107,7 +103,7 @@ public class Game {
         menu.menu();
     }
 
-    public void gameOver () {
+    public void gameOver () throws InterruptedException {
         GameOver gameOver = new GameOver();
         Keyboard keyboard = new Keyboard(gameOver);
 
@@ -118,6 +114,12 @@ public class Game {
         keyboard.addEventListener(r);
 
         gameOver.gameOver();
+
+        player.setHealth(3);
+        points = 0;
+        menu();
+
+        start();
 
     }
 

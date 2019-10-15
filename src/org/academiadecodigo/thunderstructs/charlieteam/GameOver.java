@@ -10,9 +10,11 @@ public class GameOver implements KeyboardHandler {
     public void gameOver(){
 
         Picture over = new Picture(10, 10 ,"spr_gameover.png");
-        if (enter){
+            over.draw();
+        while (!enter){
             over.draw();
         }
+        over.delete();
     }
 
     @Override
