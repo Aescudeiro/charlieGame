@@ -35,25 +35,11 @@ public class Player implements KeyboardHandler {
         return playerPicture.getWidth();
     }
 
-    public int getHeight() {
-        return playerPicture.getHeight();
-    }
 
     public void draw(){
         this.playerPicture.draw();
     }
 
-    public void hide(){
-        this.playerPicture.delete();
-    }
-
-    public int playerMaxX(){
-        return playerPicture.getMaxX();
-    }
-
-    public int playerMaxY(){
-        return playerPicture.getMaxY();
-    }
 
     public int getHealth(){
         return this.health;
@@ -92,10 +78,6 @@ public class Player implements KeyboardHandler {
 
         }
 
-
     }
-
-
-
 
 }

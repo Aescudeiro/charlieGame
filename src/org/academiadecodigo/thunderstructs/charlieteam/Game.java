@@ -114,15 +114,7 @@ public class Game {
                 }
                 if (object instanceof Apple || object instanceof Salad) {
                     player.setHealth(-1);
-                    if(player.getHealth() == 2){
-                        life3.delete();
-                    }
-                    if(player.getHealth() == 1){
-                        life2.delete();
-                    }
-                    if(player.getHealth() == 0) {
-                        life.delete();
-                    }
+                    removeLife();
                     object.getFieldPos().hide();
                     return true;
                 }
@@ -140,23 +132,16 @@ public class Game {
             while (object.getFieldPos().getY() < field.getHeight() - object.getPicture().getHeight()) {
                 object.getPicture().translate(0, 1);
                 object.getFieldPos().setY(1);
+
                 Thread.sleep(threadMillis, threadNano);
-                if (collision()) {
-                }
+
+                collision();
 
             }
             object.getFieldPos().hide();
             if (object instanceof Cheeseburguer) {
                 player.setHealth(-1);
-                if(player.getHealth() == 2){
-                    life3.delete();
-                }
-                if(player.getHealth() == 1){
-                    life2.delete();
-                }
-                if(player.getHealth() == 0) {
-                    life.delete();
-                }
+                removeLife();
             }
 
             if (player.getHealth() == 0) {
@@ -176,6 +161,19 @@ public class Game {
         life.draw();
         life2.draw();
         life3.draw();
+    }
+
+    public void removeLife(){
+        if(player.getHealth() == 2){
+            life3.delete();
+        }
+        if(player.getHealth() == 1){
+            life2.delete();
+        }
+        if(player.getHealth() == 0) {
+            life.delete();
+        }
+
     }
 
 
