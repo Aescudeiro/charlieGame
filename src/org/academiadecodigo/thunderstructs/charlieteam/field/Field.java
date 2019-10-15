@@ -31,11 +31,4 @@ public class Field {
         return height;
     }
 
-    public int getCellSize() {
-        return cellSize;
-    }
-
-    public FieldPosition makeFieldPos(int col, int row){
-        return new FieldPosition(col,row,this);
-    }
 }

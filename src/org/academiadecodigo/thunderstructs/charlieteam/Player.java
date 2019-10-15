@@ -35,25 +35,11 @@ public class Player implements KeyboardHandler {
         return playerPicture.getWidth();
     }
 
-    public int getHeight() {
-        return playerPicture.getHeight();
-    }
 
     public void draw(){
         this.playerPicture.draw();
     }
 
-    public void hide(){
-        this.playerPicture.delete();
-    }
-
-    public int playerMaxX(){
-        return playerPicture.getMaxX();
-    }
-
-    public int playerMaxY(){
-        return playerPicture.getMaxY();
-    }
 
     public int getHealth(){
         return this.health;
@@ -67,7 +53,7 @@ public class Player implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT) {
-            if (pos.getX() > 40) {
+            if (pos.getX() > 45) {
                 playerPicture.translate(-20, 0);
                 pos.setX(-20);
                 playerPicture.draw();
@@ -76,7 +62,7 @@ public class Player implements KeyboardHandler {
 
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT) {
-            if (pos.getX() < field.getWidth() - 70) {
+            if (pos.getX() < field.getWidth() - 75) {
                 playerPicture.translate(20, 0);
                 pos.setX(20);
                 playerPicture.draw();
@@ -92,10 +78,6 @@ public class Player implements KeyboardHandler {
 
         }
 
-
     }
-
-
-
 
 }

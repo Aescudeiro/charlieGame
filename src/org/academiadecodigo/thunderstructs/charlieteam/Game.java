@@ -15,6 +15,9 @@ public class Game {
     private int points;
     private GameObject object;
     private ObjectFactory factory = new ObjectFactory(field);
+    Picture life;
+    Picture life2;
+    Picture life3;
 
     public void init() {
         createField();
@@ -23,56 +26,21 @@ public class Game {
         background.draw();
         createPlayer();
 
+
     }
 
     public void start() throws InterruptedException {
+        life();
         levels(10, 2, 0, 1);
+        levelUp();
         levels(20, 2, 0, 2);
+        levelUp();
         levels(30, 2, 0, 4);
-        levels(40,1 ,5,  4);
+        levelUp();
+        levels(40,1,9,4);
+        levelUp();
+        levels(100,1,9,3);
 
-
-
-
-
-
-       /* while (points < 10 && player.getHealth() > 0) {
-            int objectRandom = (int) (Math.random() * 3);
-            switch (objectRandom) {
-                case 0:
-                    object = new Cheeseburguer(field, new FieldPosition(randomPos(), -11, field));
-                    break;
-                case 1:
-                    object = new Apple(field, new FieldPosition(randomPos(), -11, field));
-                    break;
-                default:
-                    object = new Cheeseburguer(field, new FieldPosition(randomPos(), -11, field));
-                    break;
-            }
-
-            object.getFieldPos().setPicture(object.getPicture());
-            object.getFieldPos().show();
-            while (object.getFieldPos().getY() < field.getHeight() - object.getPicture().getHeight()) {
-                object.getPicture().translate(0, 1);
-                object.getFieldPos().setY(1);
-                Thread.sleep(2);
-                if(collision()){
-                   // player.setHealth(1);
-                }
-
-            }
-            object.getFieldPos().hide();
-            if(object instanceof Cheeseburguer){
-                player.setHealth(-1);
-            }
-
-            if (player.getHealth() == 0) {
-                gameOver();
-            }
-            System.out.println(player.getHealth());
-            continue;
-        }
-*/
     }
 
 
@@ -86,7 +54,6 @@ public class Game {
         this.player = new Player(field, new FieldPosition(225, 735, field));
 
         Keyboard keyboard = new Keyboard(player);
-
 
         KeyboardEvent left = new KeyboardEvent();
         player.keyPressed(left);
@@ -146,14 +113,13 @@ public class Game {
                 System.out.println("Collision");
                 if (object instanceof Cheeseburguer) {
                     points++;
-                    //System.out.println(points);
                     player.setHealth(1);
                     object.getFieldPos().hide();
                     return true;
                 }
-                if (object instanceof Apple) {
-                    System.out.println("NOOOOOOOOOOOOOOOOOOOO");
+                if (object instanceof Apple || object instanceof Salad) {
                     player.setHealth(-1);
+                    removeLife();
                     object.getFieldPos().hide();
                     return true;
                 }
@@ -171,14 +137,16 @@ public class Game {
             while (object.getFieldPos().getY() < field.getHeight() - object.getPicture().getHeight()) {
                 object.getPicture().translate(0, 1);
                 object.getFieldPos().setY(1);
+
                 Thread.sleep(threadMillis, threadNano);
-                if (collision()) {
-                }
+
+                collision();
 
             }
             object.getFieldPos().hide();
             if (object instanceof Cheeseburguer) {
                 player.setHealth(-1);
+                removeLife();
             }
 
             if (player.getHealth() == 0) {
@@ -189,6 +157,44 @@ public class Game {
         }
 
     }
+
+    public void life(){
+
+        life = new Picture(20,20,"spr_heart.png");
+        life2 = new Picture(60,20,"spr_heart.png");
+        life3 = new Picture(100,20,"spr_heart.png");
+        life.draw();
+        life2.draw();
+        life3.draw();
+    }
+
+    public void removeLife(){
+        if(player.getHealth() == 2){
+            life3.delete();
+        }
+        if(player.getHealth() == 1){
+            life2.delete();
+        }
+        if(player.getHealth() == 0) {
+            life.delete();
+        }
+
+    }
+
+    public void levelUp() {
+        LevelUp levelUp = new LevelUp();
+        Keyboard keyboard = new Keyboard(levelUp);
+
+        KeyboardEvent space = new KeyboardEvent();
+        space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        space.setKey(KeyboardEvent.KEY_SPACE);
+
+        keyboard.addEventListener(space);
+
+        levelUp.levelUp();
+    }
+
+
 
 
 }
