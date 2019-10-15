@@ -8,7 +8,7 @@ public class Salad extends GameObject {
 
         public Salad (Field field, FieldPosition pos){
             super(field , pos);
-            setPicture(new Picture(getFieldPos().getX(), getFieldPos().getY(), "spr_apple.png"));
+            setPicture(new Picture(getFieldPos().getX(), getFieldPos().getY(), "spr_lettuce.png"));
 
         }
 }
