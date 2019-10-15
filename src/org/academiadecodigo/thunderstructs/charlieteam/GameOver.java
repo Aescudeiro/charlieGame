@@ -5,13 +5,13 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class GameOver implements KeyboardHandler {
-    private boolean enter = false;
+    private boolean r = false;
 
     public void gameOver(){
 
         Picture over = new Picture(10, 10 ,"spr_gameover.png");
             over.draw();
-        while (!enter){
+        while (!r){
             over.draw();
         }
         over.delete();
@@ -23,7 +23,7 @@ public class GameOver implements KeyboardHandler {
         switch (keyboardEvent.getKey()){
 
             case KeyboardEvent.KEY_R:
-                this.enter = true;
+                this.r = true;
                 break;
         }
     }

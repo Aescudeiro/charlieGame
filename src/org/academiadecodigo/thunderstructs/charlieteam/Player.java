@@ -68,8 +68,8 @@ public class Player implements KeyboardHandler {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT) {
             if (pos.getX() > 40) {
-                playerPicture.translate(-10, 0);
-                pos.setX(-10);
+                playerPicture.translate(-20, 0);
+                pos.setX(-20);
                 playerPicture.draw();
             }
         }
@@ -77,8 +77,8 @@ public class Player implements KeyboardHandler {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT) {
             if (pos.getX() < field.getWidth() - 70) {
-                playerPicture.translate(10, 0);
-                pos.setX(10);
+                playerPicture.translate(20, 0);
+                pos.setX(20);
                 playerPicture.draw();
             }
         }
