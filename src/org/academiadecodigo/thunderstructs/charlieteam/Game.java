@@ -38,6 +38,8 @@ public class Game {
         levels(30, 2, 0, 4);
         levelUp();
         levels(40,1,9,4);
+        levelUp();
+        levels(100,1,9,3);
 
     }
 

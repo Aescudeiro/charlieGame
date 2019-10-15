@@ -53,18 +53,18 @@ public class Player implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT) {
-            if (pos.getX() > 40) {
-                playerPicture.translate(-10, 0);
-                pos.setX(-10);
+            if (pos.getX() > 45) {
+                playerPicture.translate(-20, 0);
+                pos.setX(-20);
                 playerPicture.draw();
             }
         }
 
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT) {
-            if (pos.getX() < field.getWidth() - 70) {
-                playerPicture.translate(10, 0);
-                pos.setX(10);
+            if (pos.getX() < field.getWidth() - 75) {
+                playerPicture.translate(20, 0);
+                pos.setX(20);
                 playerPicture.draw();
             }
         }
