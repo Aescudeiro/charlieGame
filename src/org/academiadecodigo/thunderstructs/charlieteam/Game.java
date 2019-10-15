@@ -26,7 +26,43 @@ public class Game {
     }
 
     public void start() throws InterruptedException {
-        levels(2, 0, 2);
+        while (points < 10 && player.getHealth() > 0) {
+            int objectRandom = (int) (Math.random() * 3);
+            switch (objectRandom) {
+                case 0:
+                    object = new Cheeseburguer(field, new FieldPosition(randomPos(), -11, field));
+                    break;
+                case 1:
+                    object = new Apple(field, new FieldPosition(randomPos(), -11, field));
+                    break;
+                default:
+                    object = new Cheeseburguer(field, new FieldPosition(randomPos(), -11, field));
+                    break;
+            }
+
+            object.getFieldPos().setPicture(object.getPicture());
+            object.getFieldPos().show();
+            while (object.getFieldPos().getY() < field.getHeight() - object.getPicture().getHeight()) {
+                object.getPicture().translate(0, 1);
+                object.getFieldPos().setY(1);
+                Thread.sleep(2);
+                if(collision()){
+                   // player.setHealth(1);
+                }
+
+            }
+            object.getFieldPos().hide();
+            if(object instanceof Cheeseburguer){
+                player.setHealth(-1);
+            }
+
+            if (player.getHealth() == 0) {
+                gameOver();
+            }
+            System.out.println(player.getHealth());
+            continue;
+        }
+
     }
 
 
@@ -93,24 +129,29 @@ public class Game {
 
     }
 
-    public void collision() {
+    public boolean collision() {
         //System.out.println("Player x: " + player.getX() + " Player maxX: " + (player.getX() + player.getWidth()));
         //System.out.println("Object x: " + object.getFieldPos().getX() + " Object maxX: " + (object.getFieldPos().getX() + object.getFieldPos().getWidth()));
+
         if (object.getFieldPos().getY() + object.getFieldPos().getHeight() == player.getY()) {
             if (player.getX() - 60 < object.getFieldPos().getX() && player.getX() + player.getWidth() > object.getFieldPos().getX() + object.getFieldPos().getWidth()) {
                 System.out.println("Collision");
                 if (object instanceof Cheeseburguer) {
                     points++;
+                    //System.out.println(points);
+                    player.setHealth(1);
+                    object.getFieldPos().hide();
+                    return true;
                 }
-                if (object instanceof Apple || object instanceof Salad) {
+                if (object instanceof Apple) {
                     System.out.println("NOOOOOOOOOOOOOOOOOOOO");
                     player.setHealth(-1);
-                    System.out.println(player.getHealth());
+                    object.getFieldPos().hide();
+                    return true;
                 }
-                object.getFieldPos().hide();
-
             }
         }
+        return false;
     }
 
 
@@ -140,8 +181,9 @@ public class Game {
             continue;
         }
 
+
     }
 
-
 }
+
 
