@@ -32,8 +32,11 @@ public class Game {
     public void start() throws InterruptedException {
         life();
         levels(10, 2, 0, 1);
+        levelUp();
         levels(20, 2, 0, 2);
+        levelUp();
         levels(30, 2, 0, 4);
+        levelUp();
         levels(40,1,9,4);
 
     }
@@ -174,6 +177,19 @@ public class Game {
             life.delete();
         }
 
+    }
+
+    public void levelUp() {
+        LevelUp levelUp = new LevelUp();
+        Keyboard keyboard = new Keyboard(levelUp);
+
+        KeyboardEvent space = new KeyboardEvent();
+        space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        space.setKey(KeyboardEvent.KEY_SPACE);
+
+        keyboard.addEventListener(space);
+
+        levelUp.levelUp();
     }
 
 
