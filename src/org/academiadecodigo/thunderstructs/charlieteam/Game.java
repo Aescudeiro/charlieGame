@@ -28,7 +28,8 @@ public class Game {
     public void start() throws InterruptedException {
         levels(10, 2, 0, 1);
         levels(20, 2, 0, 2);
-        levels(30, 1, 9, 3);
+        levels(30, 2, 0, 4);
+        levels(40,1,9,4);
 
 
 
