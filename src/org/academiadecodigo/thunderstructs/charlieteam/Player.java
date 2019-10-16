@@ -50,6 +50,11 @@ public class Player implements KeyboardHandler {
     }
 
     @Override
+    public void keyReleased(KeyboardEvent keyboardEvent) {
+
+    }
+
+    @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT) {
@@ -68,16 +73,5 @@ public class Player implements KeyboardHandler {
                 playerPicture.draw();
             }
         }
-
     }
-
-    @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
-
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT) {
-
-        }
-
-    }
-
 }

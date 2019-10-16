@@ -12,9 +12,10 @@ import org.academiadecodigo.thunderstructs.charlieteam.gameObjects.*;
 public class Game {
     private Field field;
     private Player player;
-    private int points;
+    private int points = 0;
     private GameObject object;
     private ObjectFactory factory = new ObjectFactory(field);
+    private Text textScore = new Text(420, 50, "");
     Picture life;
     Picture life2;
     Picture life3;
@@ -25,11 +26,13 @@ public class Game {
         Picture background = new Picture(10, 10, "spr_background.png");
         background.draw();
         createPlayer();
-
+        textScore.grow(35, 35);
+        textScore.draw();
 
     }
 
     public void start() throws InterruptedException {
+        points();
         life();
         levels(10, 2, 0, 1);
         levelUp();
@@ -41,7 +44,6 @@ public class Game {
         levelUp();
         levels(60, 1, 9, 3);
         win();
-
     }
 
 
@@ -98,6 +100,8 @@ public class Game {
 
         keyboard.addEventListener(r);
 
+        points = 0;
+        points();
         gameOver.gameOver();
 
         player.setHealth(3);
@@ -108,13 +112,13 @@ public class Game {
 
     }
 
-
-    public boolean collision() throws InterruptedException {
+    public boolean collision() {
         if (object.getFieldPos().getY() + object.getFieldPos().getHeight() == player.getY()) {
             if (player.getX() - 60 < object.getFieldPos().getX() && player.getX() + player.getWidth() > object.getFieldPos().getX() + object.getFieldPos().getWidth()) {
                 System.out.println("Collision");
                 if (object instanceof Cheeseburguer) {
                     points++;
+                    points();
                     player.setHealth(1);
                     object.getFieldPos().hide();
                     return true;
@@ -154,12 +158,12 @@ public class Game {
             if (player.getHealth() == 0) {
                 gameOver();
             }
-
             System.out.println(player.getHealth());
             continue;
         }
 
     }
+
     public void win() throws InterruptedException {
         Win win = new Win();
         Keyboard keyboard = new Keyboard(win);
@@ -215,6 +219,9 @@ public class Game {
         levelUp.levelUp();
     }
 
+    public void points() {
+        textScore.setText("Score: " + (points));
+    }
 
 }
 
