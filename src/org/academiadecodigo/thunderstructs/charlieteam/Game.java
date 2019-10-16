@@ -15,6 +15,7 @@ public class Game {
     private int points;
     private GameObject object;
     private ObjectFactory factory = new ObjectFactory(field);
+    private Text textScore = new Text(420,50, "");
     Picture life;
     Picture life2;
     Picture life3;
@@ -25,7 +26,9 @@ public class Game {
         Picture background = new Picture(10, 10, "spr_background.png");
         background.draw();
         createPlayer();
-
+        textScore.grow(35,35);
+        textScore.draw();
+        points();
 
     }
 
@@ -113,6 +116,7 @@ public class Game {
                 System.out.println("Collision");
                 if (object instanceof Cheeseburguer) {
                     points++;
+                    points();
                     player.setHealth(1);
                     object.getFieldPos().hide();
                     return true;
@@ -194,8 +198,9 @@ public class Game {
         levelUp.levelUp();
     }
 
-
-
+    public void points() {
+        textScore.setText("Score: " + (points));
+    }
 
 }
 

@@ -11,6 +11,7 @@ public abstract class GameObject {
     private FieldPosition fieldPos;
     private int x;
     private int y;
+    private int score;
 
 
     public GameObject(Field field,FieldPosition pos){
@@ -28,5 +29,9 @@ public abstract class GameObject {
 
     public FieldPosition getFieldPos() {
         return fieldPos;
+    }
+
+    public int getScore() {
+        return score;
     }
 }
