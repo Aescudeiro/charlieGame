@@ -8,7 +8,6 @@ public class GameOver implements KeyboardHandler {
     private boolean enter = false;
 
     public void gameOver(){
-
         Picture over = new Picture(10, 10 ,"spr_gameover.png");
             over.draw();
         while (!enter){

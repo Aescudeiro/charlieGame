@@ -12,7 +12,7 @@ import org.academiadecodigo.thunderstructs.charlieteam.gameObjects.*;
 public class Game {
     private Field field;
     private Player player;
-    private int points;
+    private int points = 0;
     private GameObject object;
     private ObjectFactory factory = new ObjectFactory(field);
     private Text textScore = new Text(420,50, "");
@@ -28,11 +28,11 @@ public class Game {
         createPlayer();
         textScore.grow(35,35);
         textScore.draw();
-        points();
 
     }
 
     public void start() throws InterruptedException {
+        points();
         life();
         levels(10, 2, 0, 1);
         levelUp();
@@ -100,10 +100,10 @@ public class Game {
 
         keyboard.addEventListener(r);
 
-        gameOver.gameOver();
-
-        player.setHealth(3);
         points = 0;
+        points();
+        gameOver.gameOver();
+        player.setHealth(3);
         menu();
 
         start();
