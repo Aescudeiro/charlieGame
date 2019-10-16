@@ -37,9 +37,10 @@ public class Game {
         levelUp();
         levels(30, 2, 0, 4);
         levelUp();
-        levels(40,1,9,4);
+        levels(40, 1, 9, 4);
         levelUp();
-        levels(100,1,9,3);
+        levels(60, 1, 9, 3);
+        win();
 
     }
 
@@ -71,7 +72,7 @@ public class Game {
 
 
     public int randomPos() {
-        return (int) (Math.random() * 400);
+        return (int) ((Math.random() * 400) + 15);
     }
 
     public void menu() {
@@ -107,7 +108,8 @@ public class Game {
 
     }
 
-    public boolean collision() {
+
+    public boolean collision() throws InterruptedException {
         if (object.getFieldPos().getY() + object.getFieldPos().getHeight() == player.getY()) {
             if (player.getX() - 60 < object.getFieldPos().getX() && player.getX() + player.getWidth() > object.getFieldPos().getX() + object.getFieldPos().getWidth()) {
                 System.out.println("Collision");
@@ -152,30 +154,49 @@ public class Game {
             if (player.getHealth() == 0) {
                 gameOver();
             }
+
             System.out.println(player.getHealth());
             continue;
         }
 
     }
+    public void win() throws InterruptedException {
+        Win win = new Win();
+        Keyboard keyboard = new Keyboard(win);
+        KeyboardEvent restart = new KeyboardEvent();
 
-    public void life(){
+        restart.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        restart.setKey(KeyboardEvent.KEY_R);
+        keyboard.addEventListener(restart);
 
-        life = new Picture(20,20,"spr_heart.png");
-        life2 = new Picture(60,20,"spr_heart.png");
-        life3 = new Picture(100,20,"spr_heart.png");
+        win.win();
+        player.setHealth(3);
+        points = 0;
+
+        menu();
+        start();
+
+
+    }
+
+    public void life() {
+
+        life = new Picture(20, 20, "spr_heart.png");
+        life2 = new Picture(60, 20, "spr_heart.png");
+        life3 = new Picture(100, 20, "spr_heart.png");
         life.draw();
         life2.draw();
         life3.draw();
     }
 
-    public void removeLife(){
-        if(player.getHealth() == 2){
+    public void removeLife() {
+        if (player.getHealth() == 2) {
             life3.delete();
         }
-        if(player.getHealth() == 1){
+        if (player.getHealth() == 1) {
             life2.delete();
         }
-        if(player.getHealth() == 0) {
+        if (player.getHealth() == 0) {
             life.delete();
         }
 
@@ -193,8 +214,6 @@ public class Game {
 
         levelUp.levelUp();
     }
-
-
 
 
 }
