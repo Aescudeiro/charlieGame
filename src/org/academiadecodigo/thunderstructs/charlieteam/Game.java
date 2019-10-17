@@ -36,9 +36,9 @@ public class Game {
         life();
         levels(10, 2, 0, 1);
         levelUp();
-        levels(20, 2, 0, 2);
+        levels(20, 1, 0, 2);
         levelUp();
-        levels(30, 2, 0, 4);
+        levels(30, 1, 5, 4);
         levelUp();
         levels(40, 1, 9, 4);
         levelUp();
@@ -115,7 +115,6 @@ public class Game {
     public boolean collision() {
         if (object.getFieldPos().getY() + object.getFieldPos().getHeight() == player.getY()) {
             if (player.getX() - 60 < object.getFieldPos().getX() && player.getX() + player.getWidth() > object.getFieldPos().getX() + object.getFieldPos().getWidth()) {
-                System.out.println("Collision");
                 if (object instanceof Cheeseburguer) {
                     points++;
                     points();
@@ -158,7 +157,6 @@ public class Game {
             if (player.getHealth() == 0) {
                 gameOver();
             }
-            System.out.println(player.getHealth());
             continue;
         }
 
